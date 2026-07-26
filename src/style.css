@@ -1,0 +1,35 @@
+:root { font-family: Tahoma, Arial, sans-serif; color: #172033; background: #f4f7fb; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, input { font: inherit; }
+.page { width: min(100% - 32px, 960px); margin: 0 auto; padding: 48px 0 72px; }
+.hero { text-align: center; margin-bottom: 28px; }
+.badge { display: inline-block; padding: 8px 14px; border-radius: 999px; background: #e8f0ff; color: #2457c5; font-weight: 700; }
+h1 { margin: 16px 0 8px; font-size: clamp(30px, 6vw, 52px); }
+.hero p { margin: 0; color: #667085; }
+.search-card, .result-card, .message, .ad-slot { background: white; border: 1px solid #e4e9f2; border-radius: 18px; box-shadow: 0 10px 30px rgba(18, 38, 63, .06); }
+.search-card { padding: 24px; }
+label { display: block; font-weight: 700; margin-bottom: 10px; }
+.search-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+input { width: 100%; padding: 15px 16px; border: 1px solid #cfd7e6; border-radius: 12px; outline: none; }
+input:focus { border-color: #2457c5; box-shadow: 0 0 0 3px rgba(36, 87, 197, .12); }
+button { border: 0; border-radius: 12px; padding: 0 24px; background: #2457c5; color: white; font-weight: 700; cursor: pointer; }
+button:disabled { opacity: .65; cursor: wait; }
+.ad-slot { min-height: 90px; margin: 20px 0; display: grid; place-items: center; color: #98a2b3; border-style: dashed; box-shadow: none; }
+.message { margin-top: 20px; padding: 18px; text-align: center; }
+.results-section { margin-top: 30px; }
+.results-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.results-heading span, .notice { color: #667085; }
+.results-grid { display: grid; gap: 14px; }
+.result-card { padding: 20px; }
+.result-card h3 { margin: 0 0 18px; }
+dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0; }
+dl div { background: #f7f9fc; border-radius: 12px; padding: 12px; }
+dt { color: #667085; font-size: 13px; }
+dd { margin: 6px 0 0; font-weight: 800; }
+@media (max-width: 640px) {
+  .page { width: min(100% - 20px, 960px); padding-top: 28px; }
+  .search-row { grid-template-columns: 1fr; }
+  button { min-height: 50px; }
+  dl { grid-template-columns: 1fr; }
+}
