@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Trendify placeholder logo</title>
+  <desc id="desc">Replace this file with the official Trendify logo while keeping the same filename.</desc>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2457c5"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+  <rect width="160" height="160" rx="38" fill="url(#g)"/>
+  <path d="M34 42h92v23H92v58H68V65H34z" fill="#fff"/>
+</svg>
