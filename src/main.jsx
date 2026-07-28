@@ -48,9 +48,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `${API_URL}/results/search/?name=${encodeURIComponent(
-          query,
-        )}&page=${requestedPage}`,
+        `${API_URL}/results/search/?q=${encodeURIComponent(query)}&page=${requestedPage}`,
       );
 
       const contentType = response.headers.get("content-type");
