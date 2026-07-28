@@ -221,11 +221,6 @@ function App() {
           <span className="powered-by">إحدى خدمات Trendify Agency</span>
         </header>
 
-        <AdSlot
-          slot={TOP_AD_SLOT}
-          label="إعلان أعلى البحث"
-          className="ad-top"
-        />
 
         <section className="search-card">
           <form onSubmit={handleSubmit}>
@@ -250,13 +245,6 @@ function App() {
 
         {message && <div className="message">{message}</div>}
 
-        {results.length > 0 && (
-          <AdSlot
-            slot={RESULTS_AD_SLOT}
-            label="إعلان قبل النتائج"
-            className="ad-results"
-          />
-        )}
 
         {results.length > 0 && (
           <section className="results-section">
@@ -350,11 +338,6 @@ function App() {
           </a>
         </section>
 
-        <AdSlot
-          slot={BOTTOM_AD_SLOT}
-          label="إعلان أسفل النتائج"
-          className="ad-bottom"
-        />
       </main>
 
       <footer className="site-footer">
