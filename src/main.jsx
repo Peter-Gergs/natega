@@ -221,7 +221,6 @@ function App() {
           <span className="powered-by">إحدى خدمات Trendify Agency</span>
         </header>
 
-
         <section className="search-card">
           <form onSubmit={handleSubmit}>
             <label htmlFor="student-name">اسم الطالب</label>
@@ -244,7 +243,6 @@ function App() {
         </section>
 
         {message && <div className="message">{message}</div>}
-
 
         {results.length > 0 && (
           <section className="results-section">
@@ -287,6 +285,11 @@ function App() {
                           ? `${result.percentage}%`
                           : "غير متاحة"}
                       </dd>
+                    </div>
+
+                    <div>
+                      <dt>الحالة</dt>
+                      <dd>{result.student_case_desc || "غير متاحة"}</dd>
                     </div>
                   </dl>
                 </article>
@@ -337,7 +340,6 @@ function App() {
             تواصل معنا
           </a>
         </section>
-
       </main>
 
       <footer className="site-footer">
