@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./style.css";
 import AdSlot from "./AdSlot";
-
+import StudentDetails from "./Student";
 const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api";
 
 const TOP_AD_SLOT = import.meta.env.VITE_ADSENSE_TOP_SLOT || "";
@@ -10,7 +10,7 @@ const RESULTS_AD_SLOT = import.meta.env.VITE_ADSENSE_RESULTS_SLOT || "";
 const BOTTOM_AD_SLOT = import.meta.env.VITE_ADSENSE_BOTTOM_SLOT || "";
 const FACEBOOK_URL = "https://www.facebook.com/smmtrendify";
 
-function BrandLogo({ compact = false }) {
+export function BrandLogo({ compact = false }) {
   const [logoFailed, setLogoFailed] = useState(false);
 
   if (logoFailed) {
@@ -259,38 +259,41 @@ function App() {
 
             <div className="results-grid">
               {results.map((result) => (
-                <article className="result-card" key={result.seating_no}>
-                  <div className="result-card-line" />
+                <a
+                  className="student-name-link"
+                  href={`/student/${encodeURIComponent(result.seating_no)}`}
+                >
+                  <article className="result-card" key={result.seating_no}>
+                    <div className="result-card-line" />
+                    <h3>{result.arabic_name}</h3>
+                    <dl>
+                      <div>
+                        <dt>رقم الجلوس</dt>
+                        <dd>{result.seating_no}</dd>
+                      </div>
 
-                  <h3>{result.arabic_name}</h3>
+                      <div>
+                        <dt>المجموع</dt>
+                        <dd>{result.total_degree ?? "غير متاح"}</dd>
+                      </div>
 
-                  <dl>
-                    <div>
-                      <dt>رقم الجلوس</dt>
-                      <dd>{result.seating_no}</dd>
-                    </div>
+                      <div>
+                        <dt>النسبة</dt>
+                        <dd>
+                          {result.percentage !== null &&
+                          result.percentage !== undefined
+                            ? `${result.percentage}%`
+                            : "غير متاحة"}
+                        </dd>
+                      </div>
 
-                    <div>
-                      <dt>المجموع</dt>
-                      <dd>{result.total_degree ?? "غير متاح"}</dd>
-                    </div>
-
-                    <div>
-                      <dt>النسبة</dt>
-                      <dd>
-                        {result.percentage !== null &&
-                        result.percentage !== undefined
-                          ? `${result.percentage}%`
-                          : "غير متاحة"}
-                      </dd>
-                    </div>
-
-                    <div>
-                      <dt>الحالة</dt>
-                      <dd>{result.student_case_desc || "غير متاحة"}</dd>
-                    </div>
-                  </dl>
-                </article>
+                      <div>
+                        <dt>الحالة</dt>
+                        <dd>{result.student_case_desc || "غير متاحة"}</dd>
+                      </div>
+                    </dl>
+                  </article>
+                </a>
               ))}
             </div>
 
@@ -354,4 +357,13 @@ function App() {
   );
 }
 
-createRoot(document.getElementById("root")).render(<App />);
+const studentPathMatch = window.location.pathname.match(
+  /^\/student\/([^/]+)\/?$/,
+);
+const page = studentPathMatch ? (
+  <StudentDetails seatingNo={decodeURIComponent(studentPathMatch[1])} />
+) : (
+  <App />
+);
+
+createRoot(document.getElementById("root")).render(page);
